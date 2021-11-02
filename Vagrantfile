@@ -5,7 +5,7 @@
 # vi: set ft=ruby :
 
 # BZT Modulname (z.B. "m151"). Daraus werden dann VMs und User ersellt, also bitte keine Spaces, sonderzeichen etc.
-bzt_modulname = "m151"
+bzt_modulname = "m152"
 
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     vb.memory = 2048
     vb.cpus = 2
 
-    config.vm.network "private_network", ip: "192.168.56.2"
+    config.vm.network "private_network", ip: "192.168.56.3"
 
     vb.customize ["modifyvm", :id, "--vram", "32"]
     vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
