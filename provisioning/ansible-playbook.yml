@@ -89,12 +89,23 @@
       user:
         name: "{{ student_user }}"
         # generated with:
-        # ansible all -i localhost, -m debug -a "msg={{ 'xxxxx' | password_hash('sha512', 'somesecretsalt') }}"
-        password: "$6$pwsalt$XdYOvh.vfdHZtOg7IEBLxAGikA.hb7DAvme/3.eG9SRIJIpS6O0Dyv2aYSr32wfUAE8o/6XKbzBEj2BB1DQuN."
+        # ansible all -i localhost, -m debug -a "msg={{ 'm152' | password_hash('sha512', 'pwsalt') }}"
+        # password: "$6$pwsalt$XdYOvh.vfdHZtOg7IEBLxAGikA.hb7DAvme/3.eG9SRIJIpS6O0Dyv2aYSr32wfUAE8o/6XKbzBEj2BB1DQuN."
+        password: "$6$pwsalt$ysenhAYWftwS0DNPlMUEKE9sBIdCRxCuhhg3lqXgRzFwRsed5HG/Kj1juQHDDTiq5yqtuO8wXgTBIW.yjtuGV1"
         shell: /bin/bash
         home: "/home/{{ student_user }}"
         groups: "docker,sudo"
         append: yes
+
+    - name: Copy docker-compose.yml
+      become: true
+      copy:
+        src: ./docker-compose.yml
+        dest: /home/m152
+        owner: m152
+        group: m152
+        mode: 0644
+
 
 
 - name: Install VS Code
